@@ -1,9 +1,4 @@
-.container {
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-
-/* .card {
+.card {
     width: 250px;
     height: 400px;
     margin: 5px;
@@ -11,4 +6,8 @@
 
 img {
     height: 50%;
-} */
+}
+
+.selected {
+    background-color: beige;
+}
