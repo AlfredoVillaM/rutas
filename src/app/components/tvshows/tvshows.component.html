@@ -1,0 +1,68 @@
+<div>
+    <h1>{{text}}</h1>
+
+    <!-- FORMULARIO NGMODEL SIMPLE -->
+    <!-- <div class="row g-3">
+      <div class="col-auto">
+        <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="name">
+      </div>
+      <div class="col-auto">
+        <button type="button" (click)="createElement()" class="btn btn-primary mb-3">Agregar</button>
+      </div>
+    </div> -->
+  
+    <!-- FORMULARIO BASADO EN TEMPLATES -->
+    <!-- <form #form="ngForm" (ngSubmit)="createElement(form)" class="row g-3">
+      <div class="col-auto">
+        <input type="text" name="name" required class="form-control" placeholder="Nombre" ngModel>
+      </div>
+      <div class="col-auto">
+        <input type="text" name="image" required class="form-control" placeholder="Imagen" ngModel>
+      </div>
+      <div class="col-auto">
+        <input type="text" name="description" required class="form-control" placeholder="Descripción" ngModel>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Agregar</button>
+      </div>
+      <div *ngIf="form.submitted && !form.valid" class="alert alert-danger" role="alert">
+        Datos incompletos.
+      </div>    
+    </form> -->
+    
+    <!-- FORMULARIO REACTIVO -->
+    <!-- <form [formGroup]="form" (ngSubmit)="createElement()" class="row g-3">
+      <div class="col-auto">
+        <input type="text" formControlName="name" class="form-control" placeholder="Nombre">
+      </div>
+      <div class="col-auto">
+        <input type="text" formControlName="image" class="form-control" placeholder="Imagen">
+      </div>
+      <div class="col-auto">
+        <input type="text" formControlName="description" class="form-control" placeholder="Descripción">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Agregar</button>
+      </div>
+      <div *ngIf="!form.valid && isFormSubmitted" class="alert alert-danger" role="alert">
+        Datos incompletos.
+      </div>    
+    </form> -->
+    <app-show-form [show]="selectedShow" (createElement)="createElement($event)"></app-show-form>
+  
+    <app-sort-cards (sortByAlphabetic)="sortByAlphabetic()" (reverseList)="reverseList()"></app-sort-cards>
+  
+    <div class="container d-flex">
+      <!-- <div *ngFor="let show of shows" class="card" style="width: 18rem;">
+        <img src="{{image}}" class="card-img-top" alt="...">
+        <img [src]="show.image" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{show.name}}</h5>
+          <p class="card-text">{{show.description}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div> -->
+      <!-- <app-show-card *ngFor="let show of shows" [name]="show.name" [description]="show.description" [image]="show.image"></app-show-card> -->
+      <app-show-card *ngFor="let show of shows" [show]="show" (deleteCard)="deleteElement($event)" (editCard)="editElement($event)"></app-show-card>
+    </div>
+  </div>
